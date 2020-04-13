@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fd.dao.UserMapper">
+
+    <sql id="queryUser">
+        id ,password,username,phone,head_img picImg,sign introduction,wechat,status,create_date registerDate,city,sex
+    </sql>
+
+    <select id="queryByUserDetail">
+        select <include refid="queryUser"/>
+        from yx_user
+        where id=#{userId}
+    </select>
+
+
+    <select id="queryBoyByMap" resultType="com.fd.entity.City">
+      select city name,count(id) value FROM yx_user where sex='男' GROUP BY city
+    </select>
+
+    <select id="querygirlByMap" resultType="com.fd.entity.City">
+         select city name,count(id) value FROM yx_user where sex='女' GROUP BY city
+    </select>
+
+
+    <select id="queryBoyByBar" resultType="com.fd.entity.Month">
+    select concat(month(create_date),'月') month,COUNT(id) count FROM yx_user where sex='男' GROUP BY month(create_date)
+    </select>
+
+
+    <select id="queryGirlByBar" resultType="com.fd.entity.Month">
+    select concat(month(create_date),'月') month,COUNT(id) count FROM yx_user where sex='女' GROUP BY month(create_date)
+    </select>
+</mapper>
