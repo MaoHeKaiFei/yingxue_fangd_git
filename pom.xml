@@ -11,7 +11,7 @@
     <groupId>com.fd</groupId>
     <artifactId>yingxue_fangd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>yingxue_fangd</name>
+    <name>yingxue_fangd_git</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
